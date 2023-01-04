@@ -23,14 +23,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-oe*z3!wq@k_2hn@&1ibby9g2t5j#m_$90!6p-k)oo#q2nqu0(2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 REST_FRAMEWORK = {
     'DEFAULT_PARSER_CLASSES': (
         'rest_framework.parsers.FileUploadParser'
-    )
+    ),
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+    ]
 }
 
 # Application definition
@@ -57,6 +60,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -66,6 +70,7 @@ CORS_ALLOWED_ORIGINS = [
    "http://localhost",
    "http://localhost:5500",
    "http://localhost:8000",
+   "http://localhost:5000",
 ]
 
 
