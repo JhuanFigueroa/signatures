@@ -79,14 +79,9 @@ class FileUploadView(APIView):
         #resizing images
         template = cv2.resize(template,(528,152))
         #cv2.imshow("template image", template)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
         template.shape #row.columns
         original = cv2.resize(original,(528,152))
         #cv2.imshow("original image", original)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
-
         #ORB Detector
         orb = cv2.ORB_create()
 
@@ -104,9 +99,6 @@ class FileUploadView(APIView):
 
         result = cv2.drawMatchesKnn(original, kp1 , template, kp2, matches_1, None)
         #cv2.imshow("result", result)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
-
         #distance similarity
         good_points = []
         for m,n in matches_1:
@@ -116,8 +108,6 @@ class FileUploadView(APIView):
 
         result = cv2.drawMatches(original, kp1 , template, kp2, good_points, None)
         #cv2.imshow("result", result)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
         #que tanto coinciden las firmas
 
         #res=5
