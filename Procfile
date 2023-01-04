@@ -1,1 +1,1 @@
-web: gunicorn icard.wsgi --log-file-.0
+web: gunicorn signatures.wsgi --log-file -
